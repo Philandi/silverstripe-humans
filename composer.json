@@ -14,6 +14,6 @@
         "composer/installers": "*"
     },
     "extra": {
-        "installer-name": "robots"
+        "installer-name": "humans"
     }
 }
