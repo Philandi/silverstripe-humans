@@ -1,0 +1,19 @@
+{
+    "name": "philandi/silverstripe-humans",
+    "description": "SilverStripe Module for generating a humans.txt",
+    "type": "silverstripe-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Philipp Lawitschka",
+            "email": "pl@lawitschka.eu"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "3.*",
+        "composer/installers": "*"
+    },
+    "extra": {
+        "installer-name": "robots"
+    }
+}
