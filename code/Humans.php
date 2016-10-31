@@ -6,13 +6,18 @@ class Humans extends Controller
         'index'
     );
 
-    public function index(SS_HTTPRequest $request)
+    /**
+     * Render the Humans template
+     *
+     * @return SS_HTTPResponse
+     */
+    public function index()
     {
         $data = new ArrayData(array(
-            'LastUpdate' => $this->getLatestUpdateDate()
+            'LastUpdate' => date('Y-m-d', strtotime($this->getLatestPageUpdate()))
         ));
 
-        $humans = $this->renderWith(array('Humans'));
+        $humans = $data->renderWith(array('Humans'));
 
         $response = new SS_HTTPResponse($humans, 200);
         $response->addHeader("Content-Type", "text/plain; charset=\"utf-8\"");
@@ -20,7 +25,12 @@ class Humans extends Controller
         return $response;
     }
 
-    private function getLatestUpdateDate()
+    /**
+     * Get latest page update time
+     *
+     * @return DateTime
+     */
+    private function getLatestPageUpdate()
     {
         return DB::query("SELECT MAX(\"LastEdited\") FROM \"SiteTree_Live\"")->value();
     }
